@@ -18,16 +18,26 @@ const slides = [
   },
 ];
 
-let arrows = document.querySelectorAll(".arrow");
-let banners = document.querySelectorAll(".banner-img");
+let arrowNext = document.querySelector("#next");
+let banners = document.querySelector(".banner-img");
+let index = 0;
 
-arrows.forEach((images) => {
+arrowNext.addEventListener("click", (e) => {
+  index++;
+  console.log(index);
+  console.log(slides);
+  console.log(slides[index]);
+  console.log(slides[index].image);
+  banners.src = "../assets/images/slideshow/" + slides[index].image;
+});
+
+/*arrows.forEach((images) => {
   images.addEventListener("click", (e) => {
     console.log(images);
     const imgNext = e.target.id === "next" ? 1 : -1;
     console.log(imgNext);
   });
-});
+});*/
 
 function Createdots(slides) {
   let Dots = document.createElement("img");
@@ -37,26 +47,26 @@ function Createdots(slides) {
 }
 
 for (i = 0; i < slides.length; i++) {
-  slides[i] = Createdots();
+  Createdots(i);
 }
 
 let Dots = document.getElementById("dot0");
 Dots.classList.add("dot_selected");
 
-let newImg = document.createElement("img");
-let newtxt = document.createElement("p");
-newImg.setAttribute("src", "../assets/images/slideshow/slide2.jpg");
-newImg.setAttribute("class", "banner-img");
+// let newImg = document.createElement("img");
+// let newtxt = document.createElement("p");
+// newImg.setAttribute("src", "../assets/images/slideshow/slide2.jpg");
+// newImg.setAttribute("class", "banner-img");
 
-document.getElementById("banner").appendChild(newImg);
-document.getElementById("banner").appendChild(newtxt);
+// document.getElementById("banner").appendChild(newImg);
+// document.getElementById("banner").appendChild(newtxt);
 
-newImg = document.createElement("img");
-newImg.setAttribute("src", "../assets/images/slideshow/slide3.jpg");
-newImg.setAttribute("class", "banner-img");
-document.getElementById("banner").appendChild(newImg);
+// newImg = document.createElement("img");
+// newImg.setAttribute("src", "../assets/images/slideshow/slide3.jpg");
+// newImg.setAttribute("class", "banner-img");
+// document.getElementById("banner").appendChild(newImg);
 
-newImg = document.createElement("img");
-newImg.setAttribute("src", "../assets/images/slideshow/slide4.png");
-newImg.setAttribute("class", "banner-img");
-document.getElementById("banner").appendChild(newImg);
+// newImg = document.createElement("img");
+// newImg.setAttribute("src", "../assets/images/slideshow/slide4.png");
+// newImg.setAttribute("class", "banner-img");
+// document.getElementById("banner").appendChild(newImg);
