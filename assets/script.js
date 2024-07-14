@@ -64,7 +64,7 @@ function createDot(slides) {
   let dot = document.createElement("i");
   dot.setAttribute("class", "dot");
   dot.setAttribute("id", "dot" + i);
-  document.getElementById("insertdots").appendChild(dot);
+  document.querySelector(".dots").appendChild(dot);
 }
 
 for (i = 0; i < slides.length; i++) {
