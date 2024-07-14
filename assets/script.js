@@ -19,54 +19,57 @@ const slides = [
 ];
 
 let arrowNext = document.querySelector("#next");
+let arrowPrev = document.querySelector("#prev");
 let banners = document.querySelector(".banner-img");
+let pText = document.querySelector("#banner p");
+let spanText = document.querySelector("#banner span");
+let dotAdded = document.getElementById("dot0");
+let dotRemove = document.getElementById("dot1");
 let index = 0;
 
-arrowNext.addEventListener("click", (e) => {
-  index++;
-  console.log(index);
-  console.log(slides);
-  console.log(slides[index]);
-  console.log(slides[index].image);
+function carouselImage(index) {
   banners.src = "../assets/images/slideshow/" + slides[index].image;
+  pText.innerHTML = slides[index].tagLine;
+  spanText.innerHTML = slides[index].tagLine;
+}
+
+function dotImageRemove(index) {
+  dotRemove = document.getElementById("dot" + index);
+  dotRemove.classList.remove("dot_selected");
+}
+
+function dotImageSelected(index) {
+  dotAdded = document.getElementById("dot" + index);
+  dotAdded.classList.add("dot_selected");
+}
+
+arrowNext.addEventListener("click", (e) => {
+  dotImageRemove(index);
+  index++;
+  if (index >= slides.length) index = 0;
+  carouselImage(index);
+  dotImageSelected(index);
 });
 
-/*arrows.forEach((images) => {
-  images.addEventListener("click", (e) => {
-    console.log(images);
-    const imgNext = e.target.id === "next" ? 1 : -1;
-    console.log(imgNext);
-  });
-});*/
+arrowPrev.addEventListener("click", (e) => {
+  dotImageRemove(index);
+  index--;
+  index > 0;
+  if (index < 0) index = slides.length - 1;
+  carouselImage(index);
+  dotImageSelected(index);
+});
 
-function Createdots(slides) {
-  let Dots = document.createElement("img");
-  Dots.setAttribute("class", "dot");
-  Dots.setAttribute("id", "dot" + i);
-  document.getElementById("insertdots").appendChild(Dots);
+function createDot(slides) {
+  let dot = document.createElement("i");
+  dot.setAttribute("class", "dot");
+  dot.setAttribute("id", "dot" + i);
+  document.getElementById("insertdots").appendChild(dot);
 }
 
 for (i = 0; i < slides.length; i++) {
-  Createdots(i);
+  createDot(i);
 }
 
-let Dots = document.getElementById("dot0");
-Dots.classList.add("dot_selected");
-
-// let newImg = document.createElement("img");
-// let newtxt = document.createElement("p");
-// newImg.setAttribute("src", "../assets/images/slideshow/slide2.jpg");
-// newImg.setAttribute("class", "banner-img");
-
-// document.getElementById("banner").appendChild(newImg);
-// document.getElementById("banner").appendChild(newtxt);
-
-// newImg = document.createElement("img");
-// newImg.setAttribute("src", "../assets/images/slideshow/slide3.jpg");
-// newImg.setAttribute("class", "banner-img");
-// document.getElementById("banner").appendChild(newImg);
-
-// newImg = document.createElement("img");
-// newImg.setAttribute("src", "../assets/images/slideshow/slide4.png");
-// newImg.setAttribute("class", "banner-img");
-// document.getElementById("banner").appendChild(newImg);
+let dot = document.getElementById("dot0");
+dot.classList.add("dot_selected");
