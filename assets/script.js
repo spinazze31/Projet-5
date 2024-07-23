@@ -54,7 +54,7 @@ arrowNext.addEventListener("click", (e) => {
 arrowPrev.addEventListener("click", (e) => {
   dotImageRemove(index);
   index--;
-  index > 0;
+
   if (index < 0) index = slides.length - 1;
   carouselImage(index);
   dotImageSelected(index);
@@ -71,5 +71,4 @@ for (i = 0; i < slides.length; i++) {
   createDot(i);
 }
 
-let dot = document.getElementById("dot0");
-dot.classList.add("dot_selected");
+dotImageSelected(0);
