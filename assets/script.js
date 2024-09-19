@@ -28,7 +28,7 @@ let dotRemove = document.getElementById("dot1");
 let index = 0;
 
 function carouselImage(index) {
-  banners.src = "../assets/images/slideshow/" + slides[index].image;
+  banners.src = "./assets/images/slideshow/" + slides[index].image;
   pText.innerHTML = slides[index].tagLine;
   spanText.innerHTML = slides[index].tagLine;
 }
